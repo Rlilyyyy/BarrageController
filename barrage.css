@@ -1,0 +1,70 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+}
+#barrage {
+	width: 100%;
+	height: 90%;
+	background: rgb(217,217,217);
+	font-family: "微软雅黑";
+	position: relative;
+	overflow: hidden;
+}
+
+#barrage .topBarrage {
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+}
+
+.barrageItem {
+	width: auto;
+	height: auto;
+	transition: all linear 15s;
+	-webkit-transition: all linear 15s;
+	-moz-transition: all linear 15s;
+	-o-transition: all linear 15s;
+	position: absolute;
+	transform: translateX(-100%);
+	/*-webkit-transform: translateX(-100%);
+	-moz-transform: translateX(-100%);*/
+}
+.barrageImg {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	/*background-image: url('main1.jpg');*/
+}
+.barrageText {
+	width: auto;
+	height: 30px;
+	display: inline-block;
+	float: left;
+	background-color: white;
+	border-radius: 30px;
+	line-height: 30px;
+	margin-top: 3px;
+	box-sizing: border-box;
+	padding: 0 10px;
+}
+.barrageText .user {
+	color: green;
+	padding-right: 8px;
+}
+/*这里自行调节在X轴上多少自动销毁*/
+.barrageAnimation {
+	transform: translateX(2000px);
+	-webkit-transform: translateX(2000px);
+	-moz-transform: translateX(2000px);
+}
