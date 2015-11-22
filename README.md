@@ -1,7 +1,7 @@
 #BarrageController<br>弹幕发射控制器
 <br>
 ##How to use？
-####1.你需要提前引入`barrage.js`文件和`barrage.css`文件（BTW,现在还未成功分离出来单独的JS文件和CSS文件）
+####1.你需要提前引入`barrage.js`文件和`barrage.css`文件
 ####2.接着你需要实例化BarrageController ({elemName}),这里的elemName指的是你所写的容纳弹幕的div的ID<br>
 #####eg. ```var temp = new BarrageController({elemName: "barrage"});```
 ####3.接下来你需要做的就是调用addBarrage({})函数，这里的addBarrage()可以传入一下参数(*为必填)
