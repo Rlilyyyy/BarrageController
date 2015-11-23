@@ -1,4 +1,7 @@
 var BarrageController = function(info) {
+
+	'use strict';
+
 	var barrageElem = document.getElementById(info.elemName);
 	// 弹幕容器高度
 	var elemHeight = barrageElem.offsetHeight;
@@ -24,6 +27,22 @@ var BarrageController = function(info) {
 	var sender = {"ADMIN":"#c66b0c","VIP":"#ff0512","NORMAL":"black"};
 	// 弹幕类型
 	var barrageItemClass = {"NORMAL":"barrageItem","TOP":"barrageItem topBarrage","BOTTOM":"barrageItem topBarrage",0:"barrageItem",1:"barrageItem topBarrage",2:"barrageItem topBarrage"};
+	// 弹幕顺序初始化旗帜
+	var clear = false;
+	// 弹幕顺序初始化时间间隔
+	var clearTime = 2000;
+
+	// 如果2000ms的时间内没有新的弹幕，则弹幕从头开始出现
+	function clearTopIndex() {
+		if(clear) {
+			topIndex = -1;
+		}else {
+			clear = true;
+		}
+		setTimeout(clearTopIndex,clearTime);
+	}
+
+	setTimeout(clearTopIndex,clearTime);
 
 	// 创建新的弹幕，传入image为头像地址，text为弹幕内容
 	function getBarrageItemElem(barrage) {
@@ -125,6 +144,7 @@ var BarrageController = function(info) {
 
 	return {
 		addBarrage: function(barrage) {
+			clear = false;
 			switch(barrage.position) {
 				case "NORMAL":
 				case 0:
