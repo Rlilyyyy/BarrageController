@@ -163,6 +163,11 @@ var BarrageController = function(info) {
 					break;
 			}
 			
+		},
+		setClearTime: function(newTime) {
+			if(newTime > 0 && newTime) {
+				clearTime = newTime;
+			}
 		}
 	};
 }
