@@ -166,7 +166,7 @@ var BarrageController = function(info) {
 		},
 		setClearTime: function(newTime) {
 			if(newTime > 0 && newTime) {
-				clearTime = newTime;
+				this.clearTime = newTime;
 			}
 		}
 	};
