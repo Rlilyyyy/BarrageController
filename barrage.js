@@ -45,7 +45,7 @@ var BarrageController = function(info) {
 	setTimeout(clearTopIndex,clearTime);
 
 	// 创建新的弹幕，传入image为头像地址，text为弹幕内容
-	function getBarrageItemElem(barrage) {
+	function createBarrageItemElem(barrage) {
 
 		if(!barrage.text)	return;
 
@@ -103,7 +103,7 @@ var BarrageController = function(info) {
 
 	// 添加普通弹幕
 	function appendBarrage(barrage) {
-		var newElem = getBarrageItemElem(barrage);
+		var newElem = createBarrageItemElem(barrage);
 		(topIndex >= 0 && topIndex <= topMax-2)?topIndex++:topIndex=0;
 		newElem.style.top = topIndex % topMax * topDefault + "px";
 		duration = parseInt(Math.random() * durationRange) + durationMin;
@@ -120,7 +120,7 @@ var BarrageController = function(info) {
 
 	// 添加顶部居中弹幕
 	function appendTopBarrage(barrage) {
-		var newElem = getBarrageItemElem(barrage);
+		var newElem = createBarrageItemElem(barrage);
 		console.log(newElem);
 		(topPosition >=0 && topPosition <= topMax-2)?topPosition++:topPosition = 0;
 		newElem.style.top = topPosition % topMax * topDefault + "px";
@@ -132,7 +132,7 @@ var BarrageController = function(info) {
 
 	// 添加底部居中弹幕
 	function appendBottomBarrage(barrage) {
-		var newElem = getBarrageItemElem(barrage);
+		var newElem = createBarrageItemElem(barrage);
 		
 		(bottomPosition >=0 && bottomPosition <= topMax-2)?bottomPosition++:bottomPosition = 0;
 		newElem.style.bottom = bottomPosition % topMax * topDefault + "px";
