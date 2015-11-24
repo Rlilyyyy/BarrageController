@@ -1,4 +1,4 @@
-var BarrageController = function(info) {
+function BarrageController(info) {
 
 	'use strict';
 
@@ -30,7 +30,9 @@ var BarrageController = function(info) {
 	// 弹幕顺序初始化旗帜
 	var clear = false;
 	// 弹幕顺序初始化时间间隔
-	var clearTime = 2000;
+	this.clearTime = 2000;
+	// 让不同作用域中都能访问到这个作用域
+	var that = this;
 
 	// 如果2000ms的时间内没有新的弹幕，则弹幕从头开始出现
 	function clearTopIndex() {
@@ -39,10 +41,10 @@ var BarrageController = function(info) {
 		}else {
 			clear = true;
 		}
-		setTimeout(clearTopIndex,clearTime);
+		setTimeout(clearTopIndex,that.clearTime);
 	}
 
-	setTimeout(clearTopIndex,clearTime);
+	setTimeout(clearTopIndex,this.clearTime);
 
 	// 创建新的弹幕，传入image为头像地址，text为弹幕内容
 	function createBarrageItemElem(barrage) {
@@ -102,7 +104,7 @@ var BarrageController = function(info) {
 	}
 
 	// 添加普通弹幕
-	function appendBarrage(barrage) {
+	this.appendBarrage = function(barrage) {
 		var newElem = createBarrageItemElem(barrage);
 		(topIndex >= 0 && topIndex <= topMax-2)?topIndex++:topIndex=0;
 		newElem.style.top = topIndex % topMax * topDefault + "px";
@@ -119,7 +121,7 @@ var BarrageController = function(info) {
 	}
 
 	// 添加顶部居中弹幕
-	function appendTopBarrage(barrage) {
+	this.appendTopBarrage = function(barrage) {
 		var newElem = createBarrageItemElem(barrage);
 		console.log(newElem);
 		(topPosition >=0 && topPosition <= topMax-2)?topPosition++:topPosition = 0;
@@ -131,7 +133,7 @@ var BarrageController = function(info) {
 	}
 
 	// 添加底部居中弹幕
-	function appendBottomBarrage(barrage) {
+	this.appendBottomBarrage = function(barrage) {
 		var newElem = createBarrageItemElem(barrage);
 		
 		(bottomPosition >=0 && bottomPosition <= topMax-2)?bottomPosition++:bottomPosition = 0;
@@ -142,32 +144,65 @@ var BarrageController = function(info) {
 		setTimeout(function(){barrageElem.removeChild(newElem)},1000);
 	}
 
-	return {
-		addBarrage: function(barrage) {
-			clear = false;
-			switch(barrage.position) {
-				case "NORMAL":
-				case 0:
-					appendBarrage(barrage);
-					break;
-				case "TOP":
-				case 1:
-					appendTopBarrage(barrage);
-					break;
-				case "BOTTOM":
-				case 2:
-					appendBottomBarrage(barrage);
-					break;
-				default:
-					appendBarrage(barrage);
-					break;
-			}
+	// return {
+	// 	addBarrage: function(barrage) {
+	// 		clear = false;
+	// 		switch(barrage.position) {
+	// 			case "NORMAL":
+	// 			case 0:
+	// 				appendBarrage(barrage);
+	// 				break;
+	// 			case "TOP":
+	// 			case 1:
+	// 				appendTopBarrage(barrage);
+	// 				break;
+	// 			case "BOTTOM":
+	// 			case 2:
+	// 				appendBottomBarrage(barrage);
+	// 				break;
+	// 			default:
+	// 				appendBarrage(barrage);
+	// 				break;
+	// 		}
 			
-		},
-		setClearTime: function(newTime) {
-			if(newTime > 0 && newTime) {
-				clearTime = newTime;
-			}
+	// 	},
+	// 	setClearTime: function(newTime) {
+	// 		if(newTime > 0 && newTime) {
+	// 			clearTime = newTime;
+	// 		}
+	// 	}
+	// };
+}
+
+BarrageController.prototype = {
+	
+	constructor: BarrageController,
+
+	setClearTime: function(newTime) {
+		if(newTime > 0 && newTime) {
+			this.clearTime = newTime;
 		}
-	};
+	},
+
+	addBarrage: function(barrage) {
+		this.clear = false;
+		switch(barrage.position) {
+			case "NORMAL":
+			case 0:
+				console.log(this)
+				this.appendBarrage(barrage);
+				break;
+			case "TOP":
+			case 1:
+				this.appendTopBarrage(barrage);
+				break;
+			case "BOTTOM":
+			case 2:
+				this.appendBottomBarrage(barrage);
+				break;
+			default:
+				this.appendBarrage(barrage);
+				break;
+		}
+	}
 }
