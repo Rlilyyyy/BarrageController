@@ -10,7 +10,7 @@ function BarrageController(info) {
 	// 每一条弹幕top增量
 	var topDefault = 50;
 	// 弹幕容器垂直允许的弹幕数量
-	var topMax = parseInt(elemHeight / topDefault);
+	var topMax = +(elemHeight / topDefault);
 	// 当前弹幕处于垂直的位置
 	var topIndex = -1;
 	// 弹幕飘过时间变换范围
@@ -60,7 +60,7 @@ function BarrageController(info) {
 		var newElem = self.createBarrageItemElem(barrage);
 		(topIndex >= 0 && topIndex <= topMax-2)?topIndex++:topIndex=0;
 		newElem.style.top = topIndex % topMax * topDefault + "px";
-		duration = parseInt(Math.random() * durationRange) + durationMin;
+		duration = +(Math.random() * durationRange) + durationMin;
 		// duration < durationMin?duration = durationMax:duration -= 2;
 		
 		newElem.style.transitionDuration = duration + "s";
