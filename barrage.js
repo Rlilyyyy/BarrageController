@@ -159,12 +159,10 @@ BarrageController.prototype = {
 	},
 
 	addBarrage: function(barrage) {
-		console.log(this)
 		this.clear = false;
 		switch(barrage.position) {
 			case "NORMAL":
 			case 0:
-				console.log(this)
 				this.appendBarrage(barrage);
 				break;
 			case "TOP":
