@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta name="full-screen" content="yes">
 	<link rel="stylesheet" type="text/css" href="barrage.css">
+	<link rel="stylesheet" type="text/css" href="loading.css">
 </head>
 <style type="text/css">
 	::selection {
@@ -19,6 +20,13 @@
 	
 	.clear {
 		clear: both;
+	}
+	.loading {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -60px;
+		margin-top: -60px;
 	}
 </style>
 <body>
@@ -45,7 +53,10 @@
 	}
 	
 
-	var temp = new BarrageController({elemName:"barrage"});
+	var temp = new BarrageController({
+		elemName:"barrage",
+		showLoad: true
+	});
 </script>
 </body>
 </html>

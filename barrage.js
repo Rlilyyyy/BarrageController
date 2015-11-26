@@ -3,6 +3,7 @@ function BarrageController(info) {
 	'use strict';
 
 	this.barrageElem = document.getElementById(info.elemName);
+	this.showLoad = info.showLoad;
 	// 弹幕容器高度
 	var elemHeight = this.barrageElem.offsetHeight;
 	// 弹幕容器宽度
@@ -33,6 +34,23 @@ function BarrageController(info) {
 	this.clearTime = 2000;
 	// 让不同作用域中都能访问到这个作用域
 	var self = this;
+
+	// 添加加载动画
+	var addLoading = function() {
+		if(this.showLoad) {
+			var loading = document.createElement("div");
+			loading.className = "loading";
+			for(var i=1;i<=5;i++) {
+				var span = document.createElement("span");
+				span.id = "load_sp" + i.toString();
+				loading.appendChild(span);
+			}
+			this.barrageElem.appendChild(loading);
+		}
+	};
+
+	addLoading.call(this);
+
 
 	// 如果2000ms的时间内没有新的弹幕，则弹幕从头开始出现
 	function clearTopIndex() {
