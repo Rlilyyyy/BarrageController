@@ -43,4 +43,22 @@ temp.addBarrage({
 ``` js
 temp.setClearTime(1000);
 ```
-####5.未完待续
+####5.加载弹幕时的动画(假设有需要)
+#####可以引入`loading.css`
+#####在对应的弹幕容器中加入加入class为`loading`的div
+#####加入5个`<span>`
+#####span的id分别对应`load-sp1`、`load-sp2`、`load-sp3`、`load-sp4`、`load-sp5`
+#####将会继续整合到控制器中，由用户选择是否启用加载等待，后期也可以单独使用该加载到任何地方
+#####eg.
+```css
+<div class="loading">
+	<span id="load_sp1"></span>
+	<span id="load_sp2"></span>
+	<span id="load_sp3"></span>
+	<span id="load_sp4"></span>
+	<span id="load_sp5"></span>
+</div>
+```
+
+####6.未完待续
+
