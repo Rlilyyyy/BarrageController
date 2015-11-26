@@ -1,0 +1,91 @@
+::selection {
+	background-color: rgb(102,205,170);
+}
+
+body {
+	margin: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+@keyframes loading
+{
+	from {width: 10px;height: 10px;}
+	to {width: 15px;height: 15px;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+	from {width: 10px;height: 10px;}
+	to {width: 15px;height: 15px;}
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+	from {width: 10px;height: 10px;}
+	to {width: 15px;height: 15px;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+	from {width: 10px;height: 10px;}
+	to {width: 15px;height: 15px;}
+}
+
+.loading {
+	width: 120px;
+	height: 110px;
+	border-radius: 5px;
+	background-color: rgba(42,42,42,0.8);
+	position: relative;
+	box-sizing: border-box;
+}
+
+.loading span {
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: white;
+	margin: 0 auto;
+	position: absolute;
+	top: 50%;
+	margin-top: -5px;
+	margin-left: 2px;
+	animation: loading 0.5s;
+	-moz-animation: loading 0.5s;	/* Firefox */
+	-webkit-animation: loading 0.5s;	/* Safari 和 Chrome */
+	-o-animation: loading 0.5s;	/* Opera */
+	animation-direction: alternate;
+	-webkit-animation-direction: alternate; /* Safari 和 Chrome */
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite; /* Safari 和 Chrome */
+}
+
+#load_sp1 {
+	left: 5%;
+	animation-delay: 0s;
+	-webkit-animation-delay: 0s;
+}
+#load_sp2 {
+	left: 23.6%;
+	animation-delay: 0.1s;
+	-webkit-animation-delay: 0.1s;
+}
+#load_sp3 {
+	left: 42.2%;
+	animation-delay: 0.2s;
+	-webkit-animation-delay: 0.2s;
+}
+#load_sp4 {
+	left: 60.8%;
+	animation-delay: 0.3s;
+	-webkit-animation-delay: 0.3s;
+}
+#load_sp5 {
+	left: 79.4%;
+	animation-delay: 0.4s;
+	-webkit-animation-delay: 0.4s;
+}
